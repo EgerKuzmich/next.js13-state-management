@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  --color-snow: #faf2f0;
+  --color-night: #0a0d07;
+  --color-duke-blue: #4b00cc;
+  --color-tomato: #f06543;
+}
+
+body,
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+body {
+  background: rgb(57, 0, 153);
+  background: linear-gradient(
+    132deg,
+    rgba(57, 0, 153, 1) 0%,
+    rgba(158, 0, 89, 1) 18%,
+    rgba(255, 0, 84, 1) 39%,
+    rgba(255, 255, 255, 1) 96%
+  );
+}
+
+.btn-link--custom {
+  text-decoration: none;
+}
+
+.btn-link--custom:not(:first-of-type) {
+  margin-left: 1rem;
+}
+
+.btn-link--custom:is(:hover, :focus, :active),
+.btn-link--active {
+  text-decoration: underline;
+}
+
+.card-title--custom {
+  color: var(--color-tomato);
+}
+
+.modal--custom {
+  border-radius: 24px;
+}
+
+.modal--custom::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}

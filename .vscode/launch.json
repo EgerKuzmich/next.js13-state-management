@@ -2,15 +2,26 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Vite DEV server",
+      "name": "Next.js: debug server-side",
+      "type": "node-terminal",
       "request": "launch",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["vite"],
-      "type": "node",
+      "command": "npm run dev"
+    },
+    {
+      "name": "Next.js: debug client-side",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000"
+    },
+    {
+      "name": "Next.js: debug full stack",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
       "serverReadyAction": {
-        "action": "debugWithChrome",
-        "pattern": "Local: http://localhost:([0-9]+)",
-        "uriFormat": "http://localhost:%s"
+        "pattern": "started server on .+, url: (https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
       }
     }
   ]

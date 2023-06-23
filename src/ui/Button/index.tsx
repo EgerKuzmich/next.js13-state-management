@@ -1,20 +1,32 @@
-import StarIcon, { StarIconActive } from 'assets/icons/star';
-import { Button } from 'grommet';
-import { useCallback, useState } from 'react';
+import StarIcon, { StarIconActive } from "@/src/assets/icons/star";
+import { useCallback, useState } from "react";
 
 interface IFavoriteButtonProps {
   active: boolean;
+  className?: string;
   onClick?: (value: boolean) => void;
 }
 
-const ControlledFavoriteButton = ({ active, onClick }: IFavoriteButtonProps) => {
+export const ControlledFavoriteButton = ({
+  active,
+  className,
+  onClick,
+}: IFavoriteButtonProps) => {
   const icon = active ? <StarIconActive /> : <StarIcon />;
+
   const clickHandler = () => {
     const newActive = !active;
     onClick?.(newActive);
   };
 
-  return <Button icon={icon} onClick={clickHandler} />;
+  return (
+    <button
+      className={`btn btn-circle ${className ?? ""}`}
+      onClick={clickHandler}
+    >
+      {icon}
+    </button>
+  );
 };
 
 const FavoriteButton = (props: IFavoriteButtonProps) => {
@@ -27,7 +39,7 @@ const FavoriteButton = (props: IFavoriteButtonProps) => {
       setActive(value);
       onClick?.(value);
     },
-    [onClick],
+    [onClick]
   );
 
   return <ControlledFavoriteButton active={active} onClick={clickHandler} />;
